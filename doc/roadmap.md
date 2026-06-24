@@ -13,7 +13,7 @@
 
 ---
 
-## Phase 1 — Learn the Concepts (~2–3 days)
+## Phase 1 — Learn the Concepts (~2–3 days) [OK]
 
 ### 1.1 Understand Docker vs VMs `[tip]`
 Read about containers, images, layers, and the OCI format. Understand why containers are lighter than VMs and how Linux kernel namespaces/cgroups make them work.
@@ -37,7 +37,7 @@ Understand TLSv1.2 vs TLSv1.3, how to generate self-signed certificates with `op
 ### 2.1 Set up the VM `[mandatory]`
 Create a Debian or Alpine virtual machine (VirtualBox or your school's system). Install Docker and Docker Compose inside it. Add your user to the `docker` group.
 
-### 2.2 Create the directory structure `[mandatory]`
+### 2.2 Create the directory structure `[mandatory]` [OK]
 
 ```
 inception/
