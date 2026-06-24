@@ -3,39 +3,43 @@ services:
     container_name: mariadb
     image: mariadb:inception
     build: ./requirements/mariadb
+    volumes:
+      - mariadb_data:/var/lib/mysql
     env_file: .env
     networks:
       - inception_network
-    restart: always
+    restart: on-failure
 
-  wordpress:
-    container_name: wordpress
-    image: wordpress:inception
-    build: ./requirements/wordpress
-    env_file: .env
-    networks:
-      - inception_network
-    depends_on:
-      mariadb:
-        condition: service_healthy
-    restart: always
-
-  nginx:
-    container_name: nginx_container
-    image: nginx:inception
-    build: ./requirements/nginx
-    port:
-      - "${WEB_PORT}:${WEB_PORT}"
-    networks:
-      - inception_network
-    env_file: .env
-    depends_on:
-      - wordpress
-    restart: always
+      #  wordpress:
+      #    container_name: wordpress
+      #    image: wordpress:inception
+      #    build: ./requirements/wordpress
+      #    env_file: .env
+      #    networks:
+      #      - inception_network
+      #    depends_on:
+      #      mariadb:
+      #        condition: service_healthy
+      #    restart: always
+      #
+      #  nginx:
+      #    container_name: nginx_container
+      #    image: nginx:inception
+      #    build: ./requirements/nginx
+      #    port:
+      #      - "${WEB_PORT}:${WEB_PORT}"
+      #    networks:
+      #      - inception_network
+      #    env_file: .env
+      #    depends_on:
+      #      - wordpress
+      #    restart: always
 
 volumes:
   wordpress_data:
   mariadb_data:
+    driver: local
+
 networks:
   inception_network:
     driver: bridge
